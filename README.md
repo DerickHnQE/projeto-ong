@@ -1,4 +1,3 @@
-# projeto-ong
 Plataforma Web para ONG - Entrega I (Fundamentos)
 
 Este projeto é a primeira entrega da disciplina de "Experiências Práticas – Fundamentos da Web e Estruturação de Interfaces". O objetivo é construir a base estrutural de uma plataforma web para uma Organização Não Governamental (ONG), aplicando conceitos fundamentais de HTML5.
