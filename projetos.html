@@ -3,82 +3,153 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rede Solidária - Projetos</title>
-    <!-- Estilização interna básica (similar ao index.html) -->
-    <style>
-        body { font-family: Arial, sans-serif; margin: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #007bff; color: white; padding: 20px; text-align: center; }
-        nav { background-color: #333; padding: 10px; text-align: center; }
-        nav a { color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
-        nav a:hover, nav a.active { background-color: #007bff; }
-        main { max-width: 900px; margin: 20px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-        section { margin-bottom: 20px; }
-        h1, h2 { color: #007bff; }
-        img { max-width: 100%; height: auto; border-radius: 8px; margin-top: 10px; }
-        footer { text-align: center; padding: 20px; background-color: #333; color: white; margin-top: 20px; }
-        .project-list article { border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px; }
-    </style>
+    <title>ONG - Nossos Projetos</title>
+    <!-- Link para o novo arquivo CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <header class="main-header">
+        <div class="container">
+            <a href="index.html" class="logo">Logo ONG</a>
+            
+            <!-- Botão do Menu Hambúrguer -->
+            <button class="hamburger-menu" aria-label="Abrir menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-    <header>
-        <h1>Rede Solidária</h1>
-        <p>Conectando corações, transformando vidas.</p>
+            <!-- Navegação Sofisticada -->
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li class="dropdown">
+                        <a href="projetos.html" class="active">Projetos</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#voluntariado">Voluntariado</a></li>
+                            <li><a href="#doacoes">Doações</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cadastro.html">Cadastro</a></li>
+                    <li><a href="#contato" class="btn btn-primary">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <nav>
-        <a href="index.html">Início</a>
-        <a href="projetos.html" class="active">Projetos</a>
-        <a href="cadastro.html">Cadastro</a>
-    </nav>
-
     <main>
-        <section class="project-list">
-            <h2>Nossos Projetos Sociais</h2>
-            
-            <article>
-                <h3>Educação para Todos</h3>
-                <p>Oferecemos aulas de reforço escolar e cursos preparatórios para jovens de comunidades carentes, visando ampliar suas oportunidades no mercado de trabalho e na vida acadêmica.</p>
-            </article>
-
-            <article>
-                <h3>Sopa Solidária</h3>
-                <p>Distribuição semanal de refeições quentes para pessoas em situação de rua, garantindo não apenas o alimento, mas também um momento de acolhimento e escuta.</p>
-            </article>
-
-            <article>
-                <h3>Meio Ambiente em Ação</h3>
-                <p>Mutirões de limpeza em parques, praias e rios, além de oficinas de reciclagem e conscientização ambiental para a comunidade local.</p>
-            </article>
+        <!-- Seção de Título -->
+        <section class="page-title-section text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Nossos Projetos Sociais</h1>
+                        <p class="lead">Veja como estamos fazendo a diferença na comunidade.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="volunteering">
-            <h2>Como ser Voluntário</h2>
-            <p>O voluntariado é a alma da nossa organização. Se você tem um tempo livre e deseja fazer a diferença, junte-se a nós! Temos vagas para diversas áreas e projetos.</p>
-            <p>Para participar, basta preencher nosso <a href="cadastro.html">formulário de cadastro</a> e aguardar nosso contato para uma entrevista de alinhamento.</p>
-            <img src="imagens/voluntarios.jpg" alt="[Imagem de voluntários felizes trabalhando juntos]">
-            <!-- Lembre-se de adicionar uma imagem na sua pasta 'imagens' com o nome 'voluntarios.jpg' -->
+        <!-- Seção de Cards de Projetos -->
+        <section id="projetos" class="section-padding">
+            <div class="container">
+                <!-- Exemplo de Alerta -->
+                <div class="alert alert-info">
+                    <strong>Novo!</strong> Estamos com novas vagas para voluntários no Projeto Criança Feliz.
+                </div>
+
+                <!-- 
+                  Sistema de Cards Responsivos:
+                  - Mobile: 1 coluna (col-12)
+                  - Tablet: 2 colunas (col-md-6)
+                  - Desktop: 3 colunas (col-lg-4)
+                -->
+                <div class="row">
+                    <!-- Card 1 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <!-- Componente de Card -->
+                        <article class="card">
+                            <img src="imagens/voluntarios.jpg" 
+                                 onerror="this.src='https://placehold.co/600x400'" 
+                                 alt="Crianças sorrindo em uma sala de aula" class="card-img-top">
+                            <div class="card-body">
+                                <h3 class="card-title">Projeto Criança Feliz</h3>
+                                <!-- Badges/Tags para categorização -->
+                                <span class="badge badge-secondary">Educação</span>
+                                <span class="badge badge-secondary">Infância</span>
+                                <p class="card-text">Oferecemos reforço escolar e atividades lúdicas para crianças de comunidades carentes.</p>
+                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="card">
+                            <img src="imagens/junte-se.jpg" 
+                                 onerror="this.src='https://placehold.co/600x400'" 
+                                 alt="Voluntários distribuindo alimentos" class="card-img-top">
+                            <div class="card-body">
+                                <h3 class="card-title">Sopa Solidária</h3>
+                                <span class="badge badge-secondary">Alimentação</span>
+                                <p class="card-text">Distribuição de refeições quentes para pessoas em situação de rua todas as noites.</p>
+                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <!-- ATENÇÃO: Reutilizei a imagem 'voluntarios.jpg' aqui. -->
+                    <!-- Troque 'src' abaixo se você tiver uma terceira imagem para este card. -->
+                    <div class="col-12 col-md-6 col-lg-4">
+                        <article class="card">
+                            <img src="imagens/voluntarios.jpg" 
+                                 onerror="this.src='https://placehold.co/600x400'" 
+                                 alt="Pessoas plantando árvores em um parque" class="card-img-top">
+                            <div class="card-body">
+                                <h3 class="card-title">Verde Urbano</h3>
+                                <span class="badge badge-secondary">Meio Ambiente</span>
+                                <p class="card-text">Mutirões de plantio de árvores e criação de hortas comunitárias em áreas urbanas.</p>
+                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
         </section>
 
-        <section class="donations">
-            <h2>Como Doar</h2>
-            <p>Sua contribuição financeira é fundamental para mantermos nossos projetos ativos. Qualquer valor faz a diferença!</p>
-            <ul>
-                <li><strong>PIX:</strong> (CNPJ) 00.123.456/0001-00</li>
-                <li><strong>Transferência Bancária:</strong>
-                    <ul>
-                        <li>Banco Solidário (001)</li>
-                        <li>Agência: 1234</li>
-                        <li>Conta Corrente: 56789-0</li>
-                    </ul>
-                </li>
-            </ul>
+        <!-- Seção de Voluntariado e Doações (usando Flexbox) -->
+        <section id="voluntariado" class="section-padding bg-light">
+            <div class="container">
+                <div class="row">
+                    <!-- Seção de Voluntariado -->
+                    <div class="col-12 col-lg-6">
+                        <h2>Como ser Voluntário?</h2>
+                        <p>Seu tempo e talento podem mudar vidas. Temos diversas áreas onde você pode atuar e fazer a diferença. O primeiro passo é se cadastrar em nossa plataforma.</p>
+                        <a href="cadastro.html" class="btn btn-primary">Seja um Voluntário</a>
+                    </div>
+                    <!-- Seção de Doações -->
+                    <div class="col-12 col-lg-6" id="doacoes">
+                        <h2>Como Doar?</h2>
+                        <p>Sua contribuição financeira é vital para a manutenção de nossos projetos. Aceitamos doações via PIX, cartão de crédito ou boleto bancário.</p>
+                        <!-- Botão com estado :disabled (exemplo) -->
+                        <a href="#" class="btn btn-secondary">Doar Agora</a>
+                        <a href="#" class="btn btn-secondary" disabled>Doação (Boleto)</a>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2025 Rede Solidária. Todos os direitos reservados.</p>
+    <footer class="main-footer" id="contato">
+        <div class="container">
+            <p>&copy; 2025 ONG - Ajuda Comunitária. Todos os direitos reservados.</p>
+        </div>
     </footer>
 
+    <!-- Script de Máscaras e Menu (Atualizado) -->
+    <script src="js/main.js"></script>
 </body>
 </html>
+
+
