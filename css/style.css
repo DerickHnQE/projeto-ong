@@ -1,0 +1,589 @@
+/* --- 0. Root / Variáveis CSS --- */
+/* Definimos cores, fontes e espaçamentos aqui para reutilização */
+:root {
+    --color-primary: #5E81AC; /* Azul */
+    --color-primary-dark: #4C6A8D;
+    --color-secondary: #8FBCBB; /* Verde Água */
+    --color-text: #4C566A; /* Cinza Escuro */
+    --color-text-light: #D8DEE9; /* Cinza Claro */
+    --color-bg: #FFFFFF;
+    --color-bg-light: #ECEFF4; /* Cinza de Fundo */
+    --color-border: #E5E9F0;
+    --color-success: #A3BE8C; /* Verde */
+    --color-danger: #BF616A; /* Vermelho */
+    --color-info: #88C0D0; /* Azul Claro */
+
+    --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-family-heading: 'Roboto Slab', serif; /* Exemplo de outra fonte para títulos */
+
+    --spacing-base: 1rem; /* 16px */
+    --border-radius: 8px;
+    --box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+/* --- 1. Base, Reset e Helpers --- */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-family-base);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    
+    /* REQUISITO: Implementar leiaute principal usando CSS grid
+      Isso força o footer a ficar no final, mesmo em páginas com pouco conteúdo.
+    */
+    display: grid;
+    grid-template-rows: auto 1fr auto; /* Header, Main (flexível), Footer */
+    min-height: 100vh;
+}
+
+a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Classes utilitárias (Helpers) */
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+.rounded-corners {
+    border-radius: var(--border-radius);
+}
+.text-center {
+    text-align: center;
+}
+.lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+}
+.bg-light {
+    background-color: var(--color-bg-light);
+}
+.section-padding {
+    padding: calc(var(--spacing-base) * 4) 0;
+}
+
+/* --- 2. Tipografia --- */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-family-heading);
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-base);
+    line-height: 1.2;
+}
+h1 { font-size: 2.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.75rem; }
+
+/* --- 3. Layout: Grid Customizado (12 Colunas) e Container --- */
+/* REQUISITO: Desenvolver sistema de grid customizado (12 colunas) */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--spacing-base);
+    padding-right: var(--spacing-base);
+}
+
+.row {
+    /* REQUISITO: Utilizar flexbox para componentes internos */
+    display: flex;
+    flex-wrap: wrap;
+    /* Remove o espaçamento negativo se não estiver usando gutters negativos */
+    /* margin-left: -var(--spacing-base); */
+    /* margin-right: -var(--spacing-base); */
+}
+
+/* Define todas as colunas para ter espaçamento */
+[class*="col-"] {
+    width: 100%;
+    padding-left: var(--spacing-base);
+    padding-right: var(--spacing-base);
+}
+
+/* Gera as 12 colunas (mobile-first, padrão é 12) */
+.col-1 { width: calc(100% / 12 * 1); }
+.col-2 { width: calc(100% / 12 * 2); }
+.col-3 { width: calc(100% / 12 * 3); }
+.col-4 { width: calc(100% / 12 * 4); }
+.col-5 { width: calc(100% / 12 * 5); }
+.col-6 { width: calc(100% / 12 * 6); }
+.col-7 { width: calc(100% / 12 * 7); }
+.col-8 { width: calc(100% / 12 * 8); }
+.col-9 { width: calc(100% / 12 * 9); }
+.col-10 { width: calc(100% / 12 * 10); }
+.col-11 { width: calc(100% / 12 * 11); }
+.col-12 { width: 100%; }
+
+/* Offsets */
+.col-offset-1 { margin-left: calc(100% / 12 * 1); }
+.col-offset-2 { margin-left: calc(100% / 12 * 2); }
+
+
+/* --- 4. Breakpoints Responsivos (5 Pontos) --- */
+/* REQUISITO: Criar no mínimo 5 breakpoints responsivos */
+
+/* Breakpoint 1: sm (Small) - 576px */
+@media (min-width: 576px) {
+    /* Gera classes .col-sm-* */
+    .col-sm-1 { width: calc(100% / 12 * 1); }
+    .col-sm-2 { width: calc(100% / 12 * 2); }
+    .col-sm-3 { width: calc(100% / 12 * 3); }
+    .col-sm-4 { width: calc(100% / 12 * 4); }
+    .col-sm-5 { width: calc(100% / 12 * 5); }
+    .col-sm-6 { width: calc(100% / 12 * 6); }
+    .col-sm-7 { width: calc(100% / 12 * 7); }
+    .col-sm-8 { width: calc(100% / 12 * 8); }
+    .col-sm-9 { width: calc(100% / 12 * 9); }
+    .col-sm-10 { width: calc(100% / 12 * 10); }
+    .col-sm-11 { width: calc(100% / 12 * 11); }
+    .col-sm-12 { width: 100%; }
+}
+
+/* Breakpoint 2: md (Medium) - 768px */
+@media (min-width: 768px) {
+    /* Gera classes .col-md-* */
+    .col-md-1 { width: calc(100% / 12 * 1); }
+    .col-md-2 { width: calc(100% / 12 * 2); }
+    .col-md-3 { width: calc(100% / 12 * 3); }
+    .col-md-4 { width: calc(100% / 12 * 4); }
+    .col-md-5 { width: calc(100% / 12 * 5); }
+    .col-md-6 { width: calc(100% / 12 * 6); }
+    .col-md-7 { width: calc(100% / 12 * 7); }
+    .col-md-8 { width: calc(100% / 12 * 8); }
+    .col-md-9 { width: calc(100% / 12 * 9); }
+    .col-md-10 { width: calc(100% / 12 * 10); }
+    .col-md-11 { width: calc(100% / 12 * 11); }
+    .col-md-12 { width: 100%; }
+    .col-offset-md-1 { margin-left: calc(100% / 12 * 1); }
+}
+
+/* Breakpoint 3: lg (Large) - 992px */
+@media (min-width: 992px) {
+    /* Gera classes .col-lg-* */
+    .col-lg-1 { width: calc(100% / 12 * 1); }
+    .col-lg-2 { width: calc(100% / 12 * 2); }
+    .col-lg-3 { width: calc(100% / 12 * 3); }
+    .col-lg-4 { width: calc(100% / 12 * 4); }
+    .col-lg-5 { width: calc(100% / 12 * 5); }
+    .col-lg-6 { width: calc(100% / 12 * 6); }
+    .col-lg-7 { width: calc(100% / 12 * 7); }
+    .col-lg-8 { width: calc(100% / 12 * 8); }
+    .col-lg-9 { width: calc(100% / 12 * 9); }
+    .col-lg-10 { width: calc(100% / 12 * 10); }
+    .col-lg-11 { width: calc(100% / 12 * 11); }
+    .col-lg-12 { width: 100%; }
+    .col-offset-lg-2 { margin-left: calc(100% / 12 * 2); }
+}
+
+/* Breakpoint 4: xl (Extra Large) - 1200px */
+@media (min-width: 1200px) {
+    /* (Classes .col-xl-* podem ser adicionadas aqui se necessário) */
+}
+
+/* Breakpoint 5: xxl (Extra Extra Large) - 1400px */
+@media (min-width: 1400px) {
+    /* (Classes .col-xxl-* podem ser adicionadas aqui se necessário) */
+}
+
+
+/* --- 5. Componentes: Header e Navegação --- */
+/* REQUISITO: Navegação Sofisticada e Menu Hambúrguer */
+
+.main-header {
+    background-color: var(--color-bg);
+    padding: var(--spacing-base) 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+.logo:hover {
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+}
+.nav-links li {
+    position: relative; /* Para o dropdown */
+    margin-left: calc(var(--spacing-base) * 1.5);
+}
+.nav-links a {
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+}
+.nav-links a.active,
+.nav-links a:hover {
+    background-color: var(--color-bg-light);
+    color: var(--color-primary-dark);
+    text-decoration: none;
+}
+.nav-links .btn { /* Estilo para o botão "Contato" no menu */
+    text-decoration: none;
+}
+
+/* Menu Dropdown */
+.dropdown-menu {
+    display: none; /* Escondido por padrão */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--color-bg);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
+    padding: 0.5rem 0;
+    list-style: none;
+    min-width: 180px;
+    z-index: 1000;
+}
+.dropdown:hover .dropdown-menu {
+    display: block; /* Aparece no hover */
+}
+.dropdown-menu li {
+    margin: 0;
+}
+.dropdown-menu a {
+    display: block;
+    padding: 0.5rem 1rem;
+    width: 100%;
+}
+
+/* Menu Hambúrguer (Mobile) */
+.hamburger-menu {
+    display: none; /* Escondido no desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+.hamburger-menu span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-primary-dark);
+    margin: 5px 0;
+    transition: all 0.3s ease;
+}
+
+/* Footer */
+.main-footer {
+    background-color: var(--color-text);
+    color: var(--color-text-light);
+    padding: calc(var(--spacing-base) * 2) 0;
+    text-align: center;
+}
+
+/* Estilos de Seção (Hero, Título da Página) */
+.hero-section {
+    background-color: var(--color-primary);
+    color: white;
+    padding: calc(var(--spacing-base) * 6) 0;
+    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://placehold.co/1920x600/5e81ac/ffffff?text=Hero+Background');
+    background-size: cover;
+    background-position: center;
+}
+.hero-section h1 {
+    color: white;
+}
+.hero-section .lead {
+    color: var(--color-text-light);
+    margin-bottom: calc(var(--spacing-base) * 2);
+}
+
+.page-title-section {
+    padding: calc(var(--spacing-base) * 3) 0;
+    background-color: var(--color-bg-light);
+}
+
+/* --- 6. Componentes: Botões --- */
+/* REQUISITO: Botões com estados visuais (hover, focus, active, disabled) */
+
+.btn {
+    display: inline-block;
+    font-weight: 500;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 2px solid transparent;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    border-radius: var(--border-radius);
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* Botão Primário */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+}
+/* :hover */
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+    color: white;
+    text-decoration: none;
+}
+/* :focus (para acessibilidade) */
+.btn-primary:focus {
+    box-shadow: 0 0 0 3px rgba(94, 129, 172, 0.5);
+    outline: none;
+}
+/* :active (clicado) */
+.btn-primary:active {
+    transform: translateY(1px);
+}
+
+/* Botão Outline */
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+}
+
+/* Tamanhos de Botão */
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.25rem;
+}
+
+/* :disabled */
+.btn:disabled,
+.btn[disabled] {
+    background-color: var(--color-border);
+    border-color: var(--color-border);
+    color: var(--color-text);
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* --- 7. Componentes: Cards --- */
+/* REQUISITO: Desenvolver sistema de cards responsivos para projetos */
+
+.card {
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: calc(var(--spacing-base) * 2);
+    overflow: hidden; /* Garante que a imagem arredondada funcione */
+    
+    /* Usando Flexbox para layout interno do card */
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Para alinhar cards na mesma linha */
+}
+.card-img-top {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.card-body {
+    padding: calc(var(--spacing-base) * 1.5);
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Faz o body crescer para preencher o espaço */
+}
+.card-title {
+    margin-bottom: calc(var(--spacing-base) * 0.5);
+}
+.card-text {
+    flex-grow: 1; /* Empurra o botão para baixo */
+    margin-bottom: var(--spacing-base);
+}
+.card-body .btn {
+    margin-top: auto; /* Alinha o botão no final do card */
+}
+
+/* --- 8. Componentes: Formulários --- */
+/* REQUISITO: Implementar formulários estilizados com validação visual */
+
+.styled-form fieldset {
+    border: 1px solid var(--color-border);
+    padding: calc(var(--spacing-base) * 1.5);
+    border-radius: var(--border-radius);
+    margin-bottom: calc(var(--spacing-base) * 1.5);
+}
+.styled-form legend {
+    font-family: var(--font-family-heading);
+    font-size: 1.25rem;
+    padding: 0 0.5rem;
+    color: var(--color-primary-dark);
+}
+
+.form-group {
+    margin-bottom: var(--spacing-base);
+}
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    font-family: var(--font-family-base);
+    border: 2px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(94, 129, 172, 0.3);
+}
+
+/* Validação Visual */
+/* Estilo quando o campo é válido (e foi mexido) */
+.form-control:valid:not(:placeholder-shown) {
+    border-color: var(--color-success);
+}
+/* Estilo quando o campo é inválido (e foi mexido) */
+.form-control:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: var(--color-danger);
+}
+
+.form-actions {
+    margin-top: calc(var(--spacing-base) * 2);
+    display: flex;
+    gap: var(--spacing-base);
+}
+
+/* --- 9. Componentes: Badges & Feedback --- */
+/* REQUISITO: Sistema de badges e componentes de feedback (alerts) */
+
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.6em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 20px;
+    background-color: var(--color-primary);
+    color: white;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.badge-secondary {
+    background-color: var(--color-secondary);
+    color: var(--color-text);
+}
+
+/* Alertas */
+.alert {
+    padding: 1.5rem;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-base) * 2;
+}
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: var(--color-info);
+}
+.alert-info strong {
+    color: #0a434d;
+}
+
+/* --- Responsividade da Navegação (Mobile) --- */
+/* Este é o último breakpoint, aplicado à navegação */
+
+@media (max-width: 991px) { /* Ponto de quebra antes do breakpoint 'lg' */
+    
+    .hamburger-menu {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+
+    .main-nav {
+        /* Esconde o menu de links */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: var(--color-bg);
+        box-shadow: var(--box-shadow);
+        
+        /* Controla o "abrir/fechar" */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+    }
+    
+    /* Classe .active adicionada via JS */
+    .main-nav.active {
+        max-height: 500px; /* Altura suficiente para os links */
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: var(--spacing-base);
+    }
+    .nav-links li {
+        margin: 0;
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        width: 100%;
+    }
+    
+    /* Dropdown no mobile */
+    .dropdown-menu {
+        position: static;
+        display: block; /* Sempre visível quando o pai está */
+        background: none;
+        box-shadow: none;
+        border-radius: 0;
+        padding-left: var(--spacing-base); /* Indentação */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+    /* Mostra o dropdown quando o pai (li.dropdown) é clicado/hover */
+    .dropdown:hover .dropdown-menu {
+        max-height: 200px; /* Mostra o submenu */
+    }
+}
