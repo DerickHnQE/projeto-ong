@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- 
-      Layout principal usando CSS Grid:
-      O <body> é configurado como um grid de 3 linhas: header, main (flexível), footer.
-    -->
     <header class="main-header">
         <div class="container">
             <a href="index.html" class="logo">Logo ONG</a>
@@ -31,18 +27,25 @@
                         <a href="projetos.html">Projetos</a>
                         <!-- Submenu Dropdown -->
                         <ul class="dropdown-menu">
-                            <li><a href="#voluntariado">Voluntariado</a></li>
-                            <li><a href="#doacoes">Doações</a></li>
+                            <!-- (ENTREGA III) Caminho corrigido para o SPA -->
+                            <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                            <li><a href="projetos.html#doacoes">Doações</a></li>
                         </ul>
                     </li>
                     <li><a href="cadastro.html">Cadastro</a></li>
+                    <!-- (ENTREGA III) Link de âncora corrigido -->
                     <li><a href="#contato" class="btn btn-primary">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <!-- 
+      (ENTREGA III) 
+      O 'id="page-content"' é o alvo do nosso SPA. 
+      O conteúdo das outras páginas será carregado aqui.
+    -->
+    <main id="page-content">
         <!-- Seção Hero com sistema de grid customizado -->
         <section class="hero-section text-center">
             <div class="container">
@@ -61,15 +64,19 @@
         <section id="sobre" class="section-padding">
             <div class="container">
                 <div class="row align-items-center">
-                    <!-- 
-                      Layout responsivo:
-                      - Mobile (padrão): 12 colunas (ocupa a tela toda)
-                      - Desktop (lg): 6 colunas (meia tela)
-                    -->
                     <div class="col-12 col-lg-6">
                         <img src="imagens/organizacao.jpg" 
                              onerror="this.src='https://placehold.co/600x400'" 
                              alt="Equipe da organização em um evento comunitário" class="img-fluid rounded-corners">
+                    </div>
+                    <!-- (CORRIGIDO) Adicionado o texto que estava faltando -->
+                    <div class="col-12 col-lg-6">
+                        <h2>Sobre a Nossa Organização</h2>
+                        <span class="badge">Educação</span>
+                        <span class="badge">Comunidade</span>
+                        <p>Somos uma organização sem fins lucrativos dedicada a criar um impacto positivo em nossa comunidade. Nossa missão é fornecer suporte, educação e oportunidades para aqueles que enfrentam adversidades.</p>
+                        <p>Fundada em 2010, já impactamos milhares de vidas.</p>
+                        <a href="projetos.html" class="btn btn-outline">Nossos Projetos</a>
                     </div>
                 </div>
             </div>
@@ -101,19 +108,12 @@
                 </div>
             </div>
         </section>
-        
-        <!-- Exemplo de Componente de Feedback (Modal) - (controlado via JS, não implementado) -->
-        <!-- 
-        <div class="modal-backdrop">
-            <div class="modal">
-                <h3>Título do Modal</h3>
-                <p>Este é um componente de modal para feedback.</p>
-                <button class="btn btn-secondary">Fechar</button>
-            </div>
-        </div>
-        -->
-
     </main>
+
+    <!-- (ENTREGA III) Componente de Toast/Notificação para feedback do formulário -->
+    <div id="toast" class="toast">
+        <span id="toast-message">Mensagem de exemplo</span>
+    </div>
 
     <footer class="main-footer">
         <div class="container">
@@ -125,5 +125,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
