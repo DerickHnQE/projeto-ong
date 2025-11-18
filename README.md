@@ -1,6 +1,6 @@
-Plataforma Web para ONG - Entregas I e II
+Plataforma Web para ONG - Entregas I, II e III
 
-Este projeto é a entrega das disciplinas de "Experiências Práticas – Fundamentos da Web e Estruturação de Interfaces". O objetivo é construir a base estrutural e visual de uma plataforma web para uma Organização Não Governamental (ONG).
+Este projeto é a entrega das disciplinas de "Experiências Práticas – Fundamentos da Web e Estruturação de Interfaces". O objetivo é construir uma plataforma web dinâmica e interativa para uma Organização Não Governamental (ONG).
 
 Contexto
 
@@ -8,7 +8,7 @@ O projeto visa criar uma presença digital profissional para ONGs, permitindo-lh
 
 Requisitos Cumpridos (Entrega I - Fundamentos)
 
-Estrutura HTML5 Semântica: 3 páginas (index.html, projetos.html, cadastro.html) usando tags semânticas (<header>, <nav>, <main>, <footer>, etc.).
+Estrutura HTML5 Semântica: 3 páginas (index.html, projetos.html, cadastro.html) usando tags semânticas.
 
 Formulários Complexos: Formulário de cadastro com validação nativa do HTML5.
 
@@ -16,49 +16,57 @@ Máscaras de Input (JavaScript): O arquivo js/main.js aplica máscaras dinâmica
 
 Requisitos Cumpridos (Entrega II - CSS Avançado)
 
-Esta entrega adicionou a camada visual e responsiva ao projeto, implementando os seguintes requisitos:
+Leiautes Responsivos com Flexbox e Grid: Implementado um sistema de grid customizado de 12 colunas e 5 breakpoints.
 
-1. Leiautes Responsivos com Flexbox e Grid
+Navegação Sofisticada: Menu responsivo com submenu dropdown e menu hambúrguer funcional.
 
-CSS Grid (Layout Principal): O layout geral da página (body) usa display: grid para estruturar header, main e footer, garantindo um rodapé fixo.
+Componentes de Interface: Cards, botões com estados, formulários estilizados, alertas e badges.
 
-Flexbox (Componentes): Flexbox é usado extensivamente para alinhamentos internos, como no cabeçalho, nos cards e no sistema de grid.
+Requisitos Cumpridos (Entrega III - JavaScript Avançado)
 
-5 Breakpoints Responsivos: O css/style.css define 5 pontos de quebra (sm, md, lg, xl, xxl) para adaptar o layout.
+Esta entrega focou em transformar a interface estática em uma aplicação dinâmica:
 
-Sistema de Grid Customizado (12 Colunas): Foi criado um sistema de 12 colunas (ex: .col-6, .col-lg-4) que é totalmente responsivo (mobile-first).
+1. Manipulação do DOM
 
-2. Navegação Sofisticada e Interativa
+Sistema de Single Page Application (SPA) Básico: O site agora funciona como uma SPA. Clicar nos links de navegação (Início, Projetos, Cadastro) não recarrega a página.
 
-Menu Principal Responsivo: O menu se adapta a telas de desktop.
+Templates JavaScript: O JavaScript (em js/main.js) utiliza a função fetch() para buscar o conteúdo das outras páginas HTML. Em seguida, usa o DOMParser para analisar o texto HTML, extrair o conteúdo da tag <main id="page-content"> (nosso "template") e injetá-lo dinamicamente na página atual.
 
-Submenu Dropdown: O link "Projetos" possui um submenu dropdown funcional.
+A navegação do navegador (botões "Voltar" e "Avançar") é tratada pelo evento popstate.
 
-Menu Hambúrguer (Mobile): Em telas menores, o menu se transforma em um ícone "hambúrguer" que, ao ser clicado (via JavaScript), revela a navegação.
+2. Funcionalidades Específicas Obrigatórias
 
-3. Componentes de Interface
+Sistema de Verificação de Consistência de Dados: O formulário de cadastro agora possui um sistema robusto de validação em tempo real:
 
-Cards Responsivos: A página de projetos utiliza um sistema de cards que se ajustam (de 1 para 2 ou 3 colunas) dependendo do tamanho da tela.
+Aviso ao Usuário: A validação nativa do navegador foi desabilitada (novalidate) e substituída por mensagens de erro customizadas (.error-message) que aparecem abaixo de cada campo inválido.
 
-Botões com Estados: Os botões (.btn) possuem estilos visuais para os estados :hover, :focus, :active e :disabled.
+Verificação de Consistência: Além de checar se os campos estão preenchidos, o sistema valida:
 
-Formulários Estilizados: O formulário de cadastro foi totalmente estilizado e inclui validação visual (campos ficam verdes/vermelhos) usando CSS.
+CPF: Utiliza um algoritmo real (Módulo 11) para verificar se o número do CPF é matematicamente válido (função validaCPF).
 
-Componentes de Feedback: Inclui estilos para .alert (usado na página de projetos).
+Idade: Verifica se o usuário tem a idade mínima (ex: 16 anos) com base na data de nascimento (função isOldEnough).
 
-Badges e Tags: Utiliza componentes .badge para categorização de projetos.
+Feedback (Toast): Ao tentar enviar o formulário, o usuário recebe uma notificação (Toast) de "Sucesso" ou "Erro", em vez de um alert().
+
+3. Código JavaScript Modular
+
+O arquivo js/main.js foi refatorado e organizado por funcionalidade (Módulo SPA, Módulo de Componentes, Módulo de Máscaras, Módulo de Formulário), como solicitado.
 
 Tecnologias Utilizadas
 
 HTML5: Para toda a estrutura e semântica.
 
-CSS3 (Modular):
+CSS3 (Modular): CSS Grid, Flexbox, Variáveis CSS, Media Queries.
 
-O arquivo css/style.css está organizado com comentários que simulam uma estrutura modular (Base, Layout, Componentes, etc.).
+JavaScript (ES6+):
 
-CSS Grid, Flexbox, Variáveis CSS (Custom Properties) e Media Queries.
+Manipulação do DOM (SPA).
 
-JavaScript (ES6+): Para a funcionalidade de máscaras de input e o toggle do menu hambúrguer.
+fetch() e DOMParser (Templates).
+
+History API (pushState, popstate).
+
+Validação de formulário avançada.
 
 Como Executar o Projeto
 
@@ -79,6 +87,8 @@ Certifique-se de que a estrutura de pastas está correta:
 |   |-- (suas imagens aqui)
 
 
-Abra o arquivo index.html em qualquer navegador web.
+Importante: Devido ao uso da API fetch() para o SPA, o projeto deve ser executado a partir de um servidor local (como a extensão "Live Server" do VS Code). Abrir o index.html diretamente do arquivo (file:///...) causará erros de CORS e o SPA não funcionará.
 
-Redimensione a janela do navegador para testar a responsividade e o menu mobile.
+Abra o projeto no seu servidor local (ex: http://127.0.0.1:5500/).
+
+Navegue pelo site e teste o formulário de cadastro.

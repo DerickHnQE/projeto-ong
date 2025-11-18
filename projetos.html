@@ -26,18 +26,21 @@
                     <li class="dropdown">
                         <a href="projetos.html" class="active">Projetos</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#voluntariado">Voluntariado</a></li>
-                            <li><a href="#doacoes">Doações</a></li>
+                            <!-- (ENTREGA III) Caminho corrigido para o SPA -->
+                            <li><a href="projetos.html#voluntariado">Voluntariado</a></li>
+                            <li><a href="projetos.html#doacoes">Doações</a></li>
                         </ul>
                     </li>
                     <li><a href="cadastro.html">Cadastro</a></li>
+                    <!-- (ENTREGA III) Link de âncora corrigido -->
                     <li><a href="#contato" class="btn btn-primary">Contato</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
+    <!-- (ENTREGA III) O 'id="page-content"' é o alvo do nosso SPA. -->
+    <main id="page-content">
         <!-- Seção de Título -->
         <section class="page-title-section text-center">
             <div class="container">
@@ -78,7 +81,7 @@
                                 <span class="badge badge-secondary">Educação</span>
                                 <span class="badge badge-secondary">Infância</span>
                                 <p class="card-text">Oferecemos reforço escolar e atividades lúdicas para crianças de comunidades carentes.</p>
-                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                                <a href="projetos.html" class="btn btn-outline">Saiba Mais</a>
                             </div>
                         </article>
                     </div>
@@ -93,14 +96,12 @@
                                 <h3 class="card-title">Sopa Solidária</h3>
                                 <span class="badge badge-secondary">Alimentação</span>
                                 <p class="card-text">Distribuição de refeições quentes para pessoas em situação de rua todas as noites.</p>
-                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                                <a href="projetos.html" class="btn btn-outline">Saiba Mais</a>
                             </div>
                         </article>
                     </div>
 
                     <!-- Card 3 -->
-                    <!-- ATENÇÃO: Reutilizei a imagem 'voluntarios.jpg' aqui. -->
-                    <!-- Troque 'src' abaixo se você tiver uma terceira imagem para este card. -->
                     <div class="col-12 col-md-6 col-lg-4">
                         <article class="card">
                             <img src="imagens/voluntarios.jpg" 
@@ -110,7 +111,7 @@
                                 <h3 class="card-title">Verde Urbano</h3>
                                 <span class="badge badge-secondary">Meio Ambiente</span>
                                 <p class="card-text">Mutirões de plantio de árvores e criação de hortas comunitárias em áreas urbanas.</p>
-                                <a href="#" class="btn btn-outline">Saiba Mais</a>
+                                <a href="projetos.html" class="btn btn-outline">Saiba Mais</a>
                             </div>
                         </article>
                     </div>
@@ -133,13 +134,18 @@
                         <h2>Como Doar?</h2>
                         <p>Sua contribuição financeira é vital para a manutenção de nossos projetos. Aceitamos doações via PIX, cartão de crédito ou boleto bancário.</p>
                         <!-- Botão com estado :disabled (exemplo) -->
-                        <a href="#" class="btn btn-secondary">Doar Agora</a>
-                        <a href="#" class="btn btn-secondary" disabled>Doação (Boleto)</a>
+                        <a href="#" class="btn btn-outline">Doar Agora (PIX)</a>
+                        <a href="#" class="btn btn-outline" disabled>Doar (Boleto)</a>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <!-- (ENTREGA III) Componente de Toast/Notificação para feedback do formulário -->
+    <div id="toast" class="toast">
+        <span id="toast-message">Mensagem de exemplo</span>
+    </div>
 
     <footer class="main-footer" id="contato">
         <div class="container">
@@ -151,5 +157,3 @@
     <script src="js/main.js"></script>
 </body>
 </html>
-
-
